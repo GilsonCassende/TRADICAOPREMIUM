@@ -40,18 +40,21 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'principais',
             title: 'Filé Mignon ao Molho Madeira',
+            micro: 'Corte nobre, suculento e macio',
             desc: 'Corte nobre grelhado, acompanhado de arroz piamontese e batatas rústicas artesanais.',
             img: 'images/dish1.jpg'
         },
         {
             category: 'principais',
             title: 'Salmão Grelhado com Ervas',
+            micro: 'Leve, com crosta perfumada de ervas',
             desc: 'Filé de salmão fresco com crosta de ervas finas, servido com risoto de limão siciliano.',
             img: 'images/dish2.jpg'
         },
         {
             category: 'principais',
             title: 'Massa Artesanal da Casa',
+            micro: 'Caseira e delicada, textura aveludada',
             desc: 'Fettuccine feito à mão com molho de tomates frescos, manjericão e lascas de parmesão.',
             img: 'images/dish3.jpg'
         },
@@ -59,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'principais',
             title: 'Filé Mignon ao Molho Madeira',
+            micro: 'Corte nobre, suculento e macio',
             desc: 'Corte nobre grelhado, acompanhado de arroz piamontese e batatas rústicas artesanais.',
             img: 'images/dish1.jpg',
             featured: true
@@ -66,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'principais',
             title: 'Salmão Grelhado com Ervas',
+            micro: 'Leve, com crosta perfumada de ervas',
             desc: 'Filé de salmão fresco com crosta de ervas finas, servido com risoto de limão siciliano.',
             img: 'images/dish2.jpg',
             featured: true
@@ -73,24 +78,28 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             category: 'entradas',
             title: 'Bruschettas Tradicionais',
+            micro: 'Crocrante e fresca, aroma de manjericão',
             desc: 'Pão italiano tostado com tomates cereja, manjericão fresco e azeite extra virgem.',
             img: 'images/dish1.jpg' // Reusing images for demo
         },
         {
             category: 'entradas',
             title: 'Carpaccio de Carne',
+            micro: 'Bem temperado, lâminas finas e delicadas',
             desc: 'Lâminas finas de carne bovina, alcaparras, parmesão e molho de mostarda.',
             img: 'images/dish2.jpg'
         },
         {
             category: 'sobremesas',
             title: 'Petit Gâteau de Chocolate',
+            micro: 'Quente e derretido, contraste com sorvete',
             desc: 'Bolo quente de chocolate com recheio cremoso, servido com sorvete de baunilha.',
             img: 'images/dish3.jpg'
         },
         {
             category: 'sobremesas',
             title: 'Pudim de Leite Condensado',
+            micro: 'Cremoso, doce na medida certa',
             desc: 'Receita tradicional da família com calda de caramelo artesanal.',
             img: 'images/dish1.jpg'
         }
@@ -109,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemHTML = `
                 <div class="menu-item ${featuredClass}" style="animation: fadeIn 0.45s ease forwards">
                     <div class="menu-item-image">
-                        <img src="${item.img}" alt="${item.title}">
+                        <img src="${item.img}" alt="${item.title}" loading="lazy">
                         ${badge}
                     </div>
                     <div class="menu-item-info">
