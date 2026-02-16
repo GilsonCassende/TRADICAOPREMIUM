@@ -530,10 +530,24 @@ nav ul li a:hover {
 
     /* Footer */
     .footer-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 20px; }
+    /* adiciona padding lateral extra para evitar corte em telas pequenas */
+    .footer-grid { padding-inline: 12px; }
     .footer-extra { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
     footer { padding: 36px 0 28px; }
     .footer-bottom { padding-top: 18px; }
     .footer-bottom p { font-size: 0.85rem; line-height: 1.4; word-break: break-word; margin: 0 8px; }
+
+    /* Garante que itens de contato quebrem corretamente e tenham espaço à direita */
+    .footer-info p, .footer-hours p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-right: 8px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
 
     /* Outros ajustes gerais */
     .location-grid, .about-grid { grid-template-columns: 1fr; gap: 20px; }
