@@ -529,25 +529,42 @@ nav ul li a:hover {
     .testimonials-grid { grid-template-columns: 1fr; gap: 18px; }
 
     /* Footer */
-    .footer-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 20px; }
-    /* adiciona padding lateral extra para evitar corte em telas pequenas */
-    .footer-grid { padding-inline: 12px; }
+    /* Mobile-first footer: empilha blocos em coluna e garante padding lateral */
+    .footer-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 20px;
+        padding-inline: 18px;
+        align-items: stretch;
+    }
     .footer-extra { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
     footer { padding: 36px 0 28px; }
     .footer-bottom { padding-top: 18px; }
-    .footer-bottom p { font-size: 0.85rem; line-height: 1.4; word-break: break-word; margin: 0 8px; }
+    .footer-bottom p { font-size: 0.85rem; line-height: 1.4; margin: 0; padding: 6px 8px 0; text-align: center; }
 
-    /* Garante que itens de contato quebrem corretamente e tenham espaço à direita */
+    /* Blocos de contato e horários: ícone + texto, sem cortes no final */
+    .footer-info, .footer-hours { width: 100%; }
+    .footer-info h4, .footer-hours h4 { margin-bottom: 12px; }
     .footer-info p, .footer-hours p {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding-right: 8px;
-        overflow-wrap: anywhere;
-        word-break: break-word;
-        max-width: 100%;
-        box-sizing: border-box;
+        margin-bottom: 8px;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: normal;
     }
+    .footer-info i, .footer-hours i {
+        flex: 0 0 30px;
+        text-align: center;
+        font-size: 1.15rem;
+        opacity: 0.95;
+    }
+
+    /* Social icons: área clicável maior e centralizada */
+    .social-links { display:flex; gap:12px; justify-content:center; }
+    .social-links a { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background: rgba(255,255,255,0.04); color: var(--white); }
 
     /* Outros ajustes gerais */
     .location-grid, .about-grid { grid-template-columns: 1fr; gap: 20px; }
