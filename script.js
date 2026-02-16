@@ -97,27 +97,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuGrid = document.getElementById('menu-items');
 
     function renderMenu(category) {
-        menuGrid.innerHTML = '';
+        // clear
+        while (menuGrid.firstChild) menuGrid.removeChild(menuGrid.firstChild);
         const filteredItems = menuItems.filter(item => item.category === category);
 
         filteredItems.forEach(item => {
-            const featuredClass = item.featured ? 'featured' : '';
-            const badge = item.featured ? '<div class="badge">Destaque</div>' : '';
-            const micro = item.micro || (item.desc ? item.desc.split('.')[0] : '');
-            const itemHTML = `
-                <article class="menu-item ${featuredClass} animate-fade" data-category="${item.category}" aria-label="${item.title}">
-                    <div class="menu-item-image">
-                        <img src="${item.img}" alt="${item.title}" loading="lazy">
-                        ${badge}
-                    </div>
-                    <div class="menu-item-info">
-                        <h3>${item.title}</h3>
-                        <p class="micro-desc">${micro}</p>
-                        <p class="full-desc">${item.desc}</p>
-                    </div>
-                </article>
-            `;
-            menuGrid.innerHTML += itemHTML;
+            const article = document.createElement('article');
+            article.className = 'menu-item' + (item.featured ? ' featured' : '') + ' animate-fade';
+            article.setAttribute('data-category', item.category);
+            article.setAttribute('aria-label', item.title);
+
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'menu-item-image';
+
+            const picture = document.createElement('picture');
+            const stem = item.img.split('/').pop().split('.').shift();
+            const source = document.createElement('source');
+            source.type = 'image/webp';
+            source.srcset = `images/optimized/${stem}-400.webp 400w, images/optimized/${stem}-800.webp 800w`;
+            source.sizes = '(max-width:600px) 100vw, 800px';
+
+            const img = document.createElement('img');
+            img.src = item.img;
+            img.alt = item.title;
+            img.loading = 'lazy';
+
+            picture.appendChild(source);
+            picture.appendChild(img);
+            imgWrap.appendChild(picture);
+
+            if (item.featured) {
+                const badge = document.createElement('div');
+                badge.className = 'badge';
+                badge.textContent = 'Destaque';
+                imgWrap.appendChild(badge);
+            }
+
+            const info = document.createElement('div');
+            info.className = 'menu-item-info';
+            const h3 = document.createElement('h3');
+            h3.textContent = item.title;
+            const micro = document.createElement('p');
+            micro.className = 'micro-desc';
+            micro.textContent = item.micro || (item.desc ? item.desc.split('.')[0] : '');
+            const full = document.createElement('p');
+            full.className = 'full-desc';
+            full.textContent = item.desc;
+
+            info.appendChild(h3);
+            info.appendChild(micro);
+            info.appendChild(full);
+
+            article.appendChild(imgWrap);
+            article.appendChild(info);
+            menuGrid.appendChild(article);
         });
     }
 
@@ -132,6 +165,36 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMenu(tab.getAttribute('data-category'));
         });
     });
+
+    // Keyboard navigation for tabs (Left/Right/Home/End/Enter/Space)
+    const tabList = document.querySelector('.menu-categories');
+    if (tabList) {
+        tabList.addEventListener('keydown', (e) => {
+            const key = e.key;
+            const current = document.activeElement;
+            if (!current || !current.classList.contains('menu-tab')) return;
+            let idx = Array.from(tabs).indexOf(current);
+            if (key === 'ArrowRight') {
+                idx = (idx + 1) % tabs.length;
+                tabs[idx].focus();
+                e.preventDefault();
+            } else if (key === 'ArrowLeft') {
+                idx = (idx - 1 + tabs.length) % tabs.length;
+                tabs[idx].focus();
+                e.preventDefault();
+            } else if (key === 'Home') {
+                tabs[0].focus();
+                e.preventDefault();
+            } else if (key === 'End') {
+                tabs[tabs.length - 1].focus();
+                e.preventDefault();
+            } else if (key === 'Enter' || key === ' ') {
+                // activate
+                current.click();
+                e.preventDefault();
+            }
+        });
+    }
 
     // Render initial category (garante que o cartão padrão apareça corretamente)
     const defaultTab = document.querySelector('.menu-tab.active') || document.querySelector('.menu-tab[data-category="principais"]');
