@@ -566,6 +566,17 @@ nav ul li a:hover {
     .social-links { display:flex; gap:12px; justify-content:center; }
     .social-links a { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background: rgba(255,255,255,0.04); color: var(--white); }
 
+    /* Força aparência e flex behavior do texto de contato */
+    .contact-text {
+        display: inline-block;
+        flex: 1 1 auto;
+        color: var(--white);
+        font-size: 0.95rem;
+        line-height: 1.35;
+        text-align: left;
+    }
+    .footer-info p, .footer-hours p { color: var(--white); opacity: 0.95; }
+
     /* Outros ajustes gerais */
     .location-grid, .about-grid { grid-template-columns: 1fr; gap: 20px; }
     .menu-footer p { margin-bottom: 14px; }
