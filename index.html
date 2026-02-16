@@ -14,14 +14,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Ir para o conteúdo</a>
 
     <!-- HEADER FIXO -->
     <header id="header">
         <div class="container">
             <div class="logo">
-                <h1>TRADIÇÃO<span>PREMIUM</span></h1>
+                <a href="#inicio" class="brand" aria-label="Restaurante Tradição Premium">TRADIÇÃO<span>PREMIUM</span></a>
             </div>
-            <nav id="nav">
+            <nav id="nav" aria-label="Menu principal">
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre</a></li>
@@ -42,11 +43,12 @@
     </header>
 
     <!-- HERO SECTION -->
+    <main id="main-content">
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <h2>Mais de 20 anos reunindo famílias à mesa.</h2>
+                <h1>Mais de 20 anos reunindo famílias à mesa.</h1>
                 <p>Receitas de família, ingredientes selecionados e um atendimento que faz você se sentir em casa.</p>
                 <div class="hero-actions">
                     <a href="#cardapio" class="btn btn-primary">Ver o cardápio</a>
@@ -87,45 +89,14 @@
                 <h2 class="section-title">Nosso Cardápio</h2>
             </div>
             
-            <div class="menu-categories">
-                <button class="menu-tab active" data-category="principais">Pratos Principais</button>
-                <button class="menu-tab" data-category="entradas">Entradas</button>
-                <button class="menu-tab" data-category="sobremesas">Sobremesas</button>
+            <div class="menu-categories" role="tablist" aria-label="Categorias do cardápio">
+                <button class="menu-tab active" data-category="principais" role="tab" aria-selected="true">Pratos Principais</button>
+                <button class="menu-tab" data-category="entradas" role="tab" aria-selected="false">Entradas</button>
+                <button class="menu-tab" data-category="sobremesas" role="tab" aria-selected="false">Sobremesas</button>
             </div>
 
-            <div class="menu-grid" id="menu-items">
-                <!-- Item 1 -->
-                <div class="menu-item featured" data-category="principais">
-                    <div class="menu-item-image">
-                        <img src="images/dish1.jpg" alt="Prato Principal">
-                        <div class="badge">Destaque</div>
-                    </div>
-                    <div class="menu-item-info">
-                        <h3>Filé Mignon ao Molho Madeira</h3>
-                        <p>Corte nobre grelhado, acompanhado de arroz piamontese e batatas rústicas artesanais.</p>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="menu-item featured" data-category="principais">
-                    <div class="menu-item-image">
-                        <img src="images/dish2.jpg" alt="Prato Principal">
-                        <div class="badge">Destaque</div>
-                    </div>
-                    <div class="menu-item-info">
-                        <h3>Salmão Grelhado com Ervas</h3>
-                        <p>Filé de salmão fresco com crosta de ervas finas, servido com risoto de limão siciliano.</p>
-                    </div>
-                </div>
-                <!-- Item 3 -->
-                <div class="menu-item" data-category="principais">
-                    <div class="menu-item-image">
-                        <img src="images/dish3.jpg" alt="Prato Principal">
-                    </div>
-                    <div class="menu-item-info">
-                        <h3>Massa Artesanal da Casa</h3>
-                        <p>Fettuccine feito à mão com molho de tomates frescos, manjericão e lascas de parmesão.</p>
-                    </div>
-                </div>
+            <div class="menu-grid" id="menu-items" aria-live="polite">
+                <!-- Conteúdo gerado via JavaScript para manter single source of truth -->
             </div>
 
             <div class="menu-footer">
@@ -134,9 +105,9 @@
                     <i class="fab fa-whatsapp"></i> Consultar no WhatsApp
                 </a>
             </div>
-            <div class="after-menu-cta" style="text-align:center; margin-top:30px">
+            <div class="after-menu-cta">
                 <a href="#contato" class="btn btn-primary">Reserve sua mesa</a>
-                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20opções%20do%20card%C3%A1pio.%20Obrigado." class="btn btn-outline" style="margin-left:12px">Consultar opções</a>
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20opções%20do%20card%C3%A1pio.%20Obrigado." class="btn btn-outline">Consultar opções</a>
             </div>
         </div>
     </section>
@@ -246,6 +217,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer>

@@ -15,50 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. MOBILE MENU TOGGLE
     const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
     const nav = document.getElementById('nav');
-    
-    mobileMenuIcon.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        // Toggle icon between bars and times
-        const icon = mobileMenuIcon.querySelector('i');
-        if (icon.classList.contains('fa-bars')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-        // Accessibility state
-        const expanded = nav.classList.contains('active');
-        mobileMenuIcon.setAttribute('aria-expanded', expanded);
-    });
+
+    if (mobileMenuIcon && nav) {
+        mobileMenuIcon.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            // Toggle icon between bars and times
+            const icon = mobileMenuIcon.querySelector('i');
+            if (icon) {
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+            // Accessibility state
+            const expanded = nav.classList.contains('active');
+            mobileMenuIcon.setAttribute('aria-expanded', expanded);
+        });
+    }
 
     // Mobile nav styles moved to CSS for performance and clarity
 
     // 3. MENU TABS FILTERING
     const tabs = document.querySelectorAll('.menu-tab');
     const menuItems = [
-        {
-            category: 'principais',
-            title: 'Filé Mignon ao Molho Madeira',
-            micro: 'Corte nobre, suculento e macio',
-            desc: 'Corte nobre grelhado, acompanhado de arroz piamontese e batatas rústicas artesanais.',
-            img: 'images/dish1.jpg'
-        },
-        {
-            category: 'principais',
-            title: 'Salmão Grelhado com Ervas',
-            micro: 'Leve, com crosta perfumada de ervas',
-            desc: 'Filé de salmão fresco com crosta de ervas finas, servido com risoto de limão siciliano.',
-            img: 'images/dish2.jpg'
-        },
-        {
-            category: 'principais',
-            title: 'Massa Artesanal da Casa',
-            micro: 'Caseira e delicada, textura aveludada',
-            desc: 'Fettuccine feito à mão com molho de tomates frescos, manjericão e lascas de parmesão.',
-            img: 'images/dish3.jpg'
-        },
-        // featured examples
         {
             category: 'principais',
             title: 'Filé Mignon ao Molho Madeira',
@@ -74,6 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: 'Filé de salmão fresco com crosta de ervas finas, servido com risoto de limão siciliano.',
             img: 'images/dish2.jpg',
             featured: true
+        },
+        {
+            category: 'principais',
+            title: 'Massa Artesanal da Casa',
+            micro: 'Caseira e delicada, textura aveludada',
+            desc: 'Fettuccine feito à mão com molho de tomates frescos, manjericão e lascas de parmesão.',
+            img: 'images/dish3.jpg'
         },
         {
             category: 'entradas',
@@ -116,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const badge = item.featured ? '<div class="badge">Destaque</div>' : '';
             const micro = item.micro || (item.desc ? item.desc.split('.')[0] : '');
             const itemHTML = `
-                <div class="menu-item ${featuredClass}" style="animation: fadeIn 0.45s ease forwards">
+                <article class="menu-item ${featuredClass} animate-fade" data-category="${item.category}" aria-label="${item.title}">
                     <div class="menu-item-image">
                         <img src="${item.img}" alt="${item.title}" loading="lazy">
                         ${badge}
@@ -126,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="micro-desc">${micro}</p>
                         <p class="full-desc">${item.desc}</p>
                     </div>
-                </div>
+                </article>
             `;
             menuGrid.innerHTML += itemHTML;
         });
@@ -134,10 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
+            // Remove active class and aria-selected
+            tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            // Activate clicked tab
             tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
             // Render items
             renderMenu(tab.getAttribute('data-category'));
         });

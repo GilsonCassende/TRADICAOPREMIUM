@@ -49,6 +49,27 @@ a {
     transition: var(--transition);
 }
 
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 16px;
+    top: 12px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: var(--primary-color);
+    color: var(--white);
+    z-index: 2000;
+    border-radius: 4px;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -169,13 +190,14 @@ header .container {
     align-items: center;
 }
 
-.logo h1 {
+.logo .brand {
     font-size: 1.5rem;
     color: var(--primary-color);
     letter-spacing: 1px;
+    display: inline-block;
 }
 
-.logo span {
+.logo .brand span {
     color: var(--highlight-color);
     font-weight: 400;
 }
@@ -236,7 +258,7 @@ nav ul li a:hover {
     padding: 80px 0;
 }
 
-.hero-content h2 {
+.hero-content h1 {
     font-size: 2.4rem;
     margin-bottom: 12px;
     line-height: 1.15;
@@ -446,6 +468,9 @@ nav ul li a:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Utility animation class used by JS-rendered items */
+.animate-fade { animation: fadeIn 0.45s ease forwards }
+
 /* MOBILE - regras consolidadas para telas <= 768px */
 @media (max-width: 768px) {
     /* Container and general spacing */
@@ -468,7 +493,7 @@ nav ul li a:hover {
         padding: 60px 0 20px;
         background-position: center top;
     }
-    .hero-content h2 {
+    .hero-content h1 {
         font-size: 1.9rem;
         line-height: 1.15;
         margin-bottom: 8px;
