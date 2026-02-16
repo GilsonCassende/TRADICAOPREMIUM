@@ -25,6 +25,9 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Evita overflow horizontal que causa margem branca nas telas móveis */
+html, body { overflow-x: hidden; }
+
 body {
     font-family: 'Lato', sans-serif;
     line-height: 1.6;
@@ -260,7 +263,8 @@ nav ul li a:hover {
 .about-image img {
     width: 100%;
     border-radius: 8px;
-    box-shadow: 20px 20px 0 var(--secondary-color);
+    /* sombra reduzida para evitar overflow em telas estreitas */
+    box-shadow: 12px 12px 0 var(--secondary-color);
 }
 
 .about-text .section-title {
