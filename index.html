@@ -35,7 +35,7 @@
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
-            <div class="mobile-menu-icon">
+            <div class="mobile-menu-icon" aria-expanded="false" role="button">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
@@ -46,8 +46,8 @@
         <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <h2>Há mais de 20 anos reunindo famílias à mesa.</h2>
-                <p>Pratos preparados com ingredientes selecionados e atendimento que faz você se sentir em casa.</p>
+                <h2>Mais de 20 anos reunindo famílias à mesa.</h2>
+                <p>Receitas de família, ingredientes selecionados e um atendimento que faz você se sentir em casa.</p>
                 <div class="hero-actions">
                     <a href="#cardapio" class="btn btn-primary">Ver o cardápio</a>
                     <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20o%20card%C3%A1pio%20e%20fazer%20uma%20reserva.%20Obrigado." class="btn btn-whatsapp-hero" target="_blank" aria-label="WhatsApp"> 
@@ -68,8 +68,12 @@
                 <div class="about-text">
                     <span class="section-subtitle">Nossa História</span>
                     <h2 class="section-title">Excelência e Tradição</h2>
-                    <p>Há décadas preservamos receitas e jeitos de fazer que passam de geração em geração. Aqui, cada prato nasce do cuidado com ingredientes frescos e do tempo que a boa cozinha exige.</p>
-                    <p>Recebemos nossos clientes como quem recebe amigos: com atenção, calma e respeito ao sabor. Nosso foco é oferecer uma experiência tranquila, com comida honesta e serviço atento.</p>
+                    <p>Preservamos receitas da família e o jeito de cozinhar que passa de geração em geração.</p>
+                    <p>Usamos ingredientes escolhidos a dedo e preparamos cada prato com calma e respeito ao gosto de casa.</p>
+                    <p>Recebemos você como quem recebe um amigo: com atenção, sorriso e cuidado para que a refeição seja um momento especial.</p>
+                    <div class="about-cta">
+                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20reserva.%20Obrigado." class="btn btn-outline">Reserve uma mesa</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,6 +133,37 @@
                 <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20o%20card%C3%A1pio.%20Obrigado." class="btn btn-whatsapp" target="_blank" aria-label="Consultar cardápio no WhatsApp">
                     <i class="fab fa-whatsapp"></i> Consultar no WhatsApp
                 </a>
+            </div>
+            <div class="after-menu-cta" style="text-align:center; margin-top:30px">
+                <a href="#contato" class="btn btn-primary">Reserve sua mesa</a>
+                <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20opções%20do%20card%C3%A1pio.%20Obrigado." class="btn btn-outline" style="margin-left:12px">Consultar opções</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos" class="testimonials section-padding">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">O que dizem</span>
+                <h2 class="section-title">Depoimentos</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="stars">★★★★★</p>
+                    <p class="testimonial-text">Comida deliciosa e atendimento acolhedor. Voltamos sempre em família.</p>
+                    <p class="testimonial-author">— Marina R.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="stars">★★★★★</p>
+                    <p class="testimonial-text">Sabor caseiro e porções generosas. Ambiente perfeito para celebrar.</p>
+                    <p class="testimonial-author">— Carlos M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="stars">★★★★★</p>
+                    <p class="testimonial-text">Ótimo atendimento, tradição visível em cada prato. Recomendo muito.</p>
+                    <p class="testimonial-author">— Ana P.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -232,8 +267,14 @@
                     <p>Dom: 11:30 às 17:00</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Restaurante Tradição Premium. Todos os direitos reservados.</p>
+            <div class="footer-extra">
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2026 Restaurante Tradição Premium — Tradição, qualidade e cuidado à mesa.</p>
+                </div>
             </div>
         </div>
     </footer>

@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
         }
+        // Accessibility state
+        const expanded = nav.classList.contains('active');
+        mobileMenuIcon.setAttribute('aria-expanded', expanded);
     });
 
     // Mobile nav styles moved to CSS for performance and clarity
@@ -102,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredItems.forEach(item => {
             const featuredClass = item.featured ? 'featured' : '';
             const badge = item.featured ? '<div class="badge">Destaque</div>' : '';
+            const micro = item.micro || (item.desc ? item.desc.split('.')[0] : '');
             const itemHTML = `
                 <div class="menu-item ${featuredClass}" style="animation: fadeIn 0.45s ease forwards">
                     <div class="menu-item-image">
@@ -110,7 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="menu-item-info">
                         <h3>${item.title}</h3>
-                        <p>${item.desc}</p>
+                        <p class="micro-desc">${micro}</p>
+                        <p class="full-desc">${item.desc}</p>
                     </div>
                 </div>
             `;
@@ -128,6 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
             renderMenu(tab.getAttribute('data-category'));
         });
     });
+
+    // Render initial category (garante que o cartão padrão apareça corretamente)
+    const defaultTab = document.querySelector('.menu-tab.active') || document.querySelector('.menu-tab[data-category="principais"]');
+    if (defaultTab) {
+        tabs.forEach(t => t.classList.remove('active'));
+        defaultTab.classList.add('active');
+        renderMenu(defaultTab.getAttribute('data-category'));
+    }
 
     // Animations handled in CSS
 

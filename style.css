@@ -8,6 +8,7 @@
     --secondary-color: #F5F1E9; /* Bege */
     --accent-color: #1B3022; /* Verde Escuro */
     --highlight-color: #5E1914; /* Vinho */
+    --whatsapp-color: #1fa84b; /* Tonalidade mais sóbria para WhatsApp */
     --text-color: #333;
     --light-text: #777;
     --white: #ffffff;
@@ -109,8 +110,9 @@ a {
 }
 
 .btn-primary:hover {
-    background-color: rgba(74,55,40,0.06);
-    color: var(--primary-color);
+    background-color: #3d2f22;
+    color: var(--white);
+    border-color: #3d2f22;
 }
 
 .btn-outline {
@@ -125,9 +127,9 @@ a {
 }
 
 .btn-whatsapp, .btn-whatsapp-small, .btn-whatsapp-large, .btn-whatsapp-hero {
-    background-color: #25D366;
+    background-color: var(--whatsapp-color);
     color: var(--white);
-    border-color: #25D366;
+    border-color: var(--whatsapp-color);
 }
 
 .btn-whatsapp-small { padding: 7px 12px; font-size: 0.9rem; border-radius:6px }
@@ -357,6 +359,27 @@ nav ul li a:hover {
     color: var(--light-text);
 }
 
+.menu-item-info .micro-desc {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-style: italic;
+    margin-bottom:8px;
+}
+
+.menu-item-info .full-desc {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.about-cta { margin-top: 12px }
+.about-cta .btn { padding: 10px 18px }
+
+.after-menu-cta { margin-top: 18px }
+.after-menu-cta .btn { padding: 10px 18px }
+
+.social-links a { color: var(--white); margin-right: 12px; font-size: 1.1rem; opacity: 0.95 }
+.social-links a:hover { opacity: 1; transform: translateY(-2px) }
+
 .menu-footer {
     text-align: center;
     margin-top: 50px;
@@ -534,15 +557,34 @@ footer {
 }
 
 /* ANIMAÇÕES */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* keyframes fadeInUp definido acima; removido duplicata para limpeza. */
+
+/* DEPOIMENTOS */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+.testimonial-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    text-align: left;
+}
+.testimonial-card .stars {
+    color: var(--highlight-color);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.testimonial-text {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+.testimonial-author {
+    color: var(--light-text);
+    font-size: 0.9rem;
 }
 
 /* RESPONSIVIDADE */
@@ -558,11 +600,14 @@ footer {
 
 @media (max-width: 768px) {
     .hero {
-        height: 80vh;
+        min-height: 60vh;
+        padding: 60px 0 40px;
     }
     
     .hero-content h2 {
-        font-size: 2.5rem;
+        font-size: 1.9rem;
+        line-height: 1.15;
+        padding: 0 10px;
     }
     
     nav {
