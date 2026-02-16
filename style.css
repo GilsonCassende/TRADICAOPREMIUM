@@ -722,3 +722,47 @@ footer {
 }
 
 /* Regras mobile consolidadas acima (@media max-width: 768px) */
+
+/* Fallback/override final para garantir comportamento MOBILE-FIRST do footer
+   (colocado ao final do arquivo para aumentar especificidade por ordem de cascade) */
+@media (max-width: 768px) {
+    footer { padding: 28px 18px 20px; }
+    .footer-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 18px !important;
+        padding-inline: 18px !important;
+        align-items: stretch !important;
+        margin-bottom: 0 !important;
+    }
+    .footer-logo, .footer-info, .footer-hours {
+        width: 100% !important;
+    }
+    .footer-info p, .footer-hours p {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        margin-bottom: 10px !important;
+        color: var(--white) !important;
+        opacity: 1 !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+    .footer-info i, .footer-hours i {
+        flex: 0 0 34px !important;
+        text-align: center !important;
+        font-size: 1.12rem !important;
+        opacity: 1 !important;
+        color: var(--white) !important;
+    }
+    .contact-text {
+        display: inline-block !important;
+        flex: 1 1 auto !important;
+        color: var(--white) !important;
+        font-size: 0.98rem !important;
+        line-height: 1.35 !important;
+        text-align: left !important;
+    }
+    .social-links { justify-content: center !important; }
+    .social-links a { width:44px; height:44px; }
+}
